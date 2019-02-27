@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ViewAnimator;
 
+import java.util.HashMap;
+
 import mk.snt.accord.activities.SampleActivityBase;
 import mk.snt.accord.logger.Log;
 import mk.snt.accord.logger.LogFragment;
@@ -35,23 +37,23 @@ public class MainActivity extends SampleActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //if (savedInstanceState == null) {
-          //  FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            //RecyclerViewFragment fragment = new RecyclerViewFragment();
-            //
-        //
-        // tansaction.replace(R.id.sample_content_fragment, fragment);
-           // transaction.commit();
+        if (savedInstanceState == null) {
+           FragmentTransaction transaction;
+            transaction = getSupportFragmentManager().beginTransaction();
+            RecyclerViewFragment fragment = new RecyclerViewFragment();
+
+            transaction.replace(R.id.sample_content_fragment, fragment);
+           transaction.commit();
         }
 
 
+
+}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main2, menu);
         return true;
     }
-}
-/*
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem logToggle = menu.findItem(R.id.menu_toggle_log);
@@ -76,10 +78,10 @@ public class MainActivity extends SampleActivityBase {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    } */
+    }
 
     /* Create a chain of targets that will receive log data */
-   /* @Override
+    @Override
     public void initializeLogging() {
         // Wraps Android's native log framework.
         LogWrapper logWrapper = new LogWrapper();
@@ -97,4 +99,4 @@ public class MainActivity extends SampleActivityBase {
 
         Log.i(TAG, "Ready");
     }
-} */
+}

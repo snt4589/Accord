@@ -16,7 +16,7 @@ import mk.snt.accord.R;
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
- abstract public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+  public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     private static final String TAG = "CustomAdapter";
 
     private String[] mDataSet;
@@ -57,15 +57,19 @@ import mk.snt.accord.R;
 
     // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)
     // Create new views (invoked by the layout manager)
-    //@Override
-    //public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view.
-      //  View v = LayoutInflater.from(viewGroup.getContext())
-        //        .inflate(R.layout.text_row_item, viewGroup, false);
+      View v = LayoutInflater.from(viewGroup.getContext())
+               .inflate(R.layout.text_row_item, viewGroup, false);
 
-        //return new ViewHolder(v);
-    //}
+        return new ViewHolder(v);
+    }
     // END_INCLUDE(recyclerViewOnCreateViewHolder)
+
+
+
 
     // BEGIN_INCLUDE(recyclerViewOnBindViewHolder)
     // Replace the contents of a view (invoked by the layout manager)
